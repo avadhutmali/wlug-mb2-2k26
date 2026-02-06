@@ -6,39 +6,40 @@ import FloatingTextarea from "./FloatingTextarea";
 import CyberSelect from "./CyberSelect";
 import OSSelector from "./OSSelector";
 import HolographicCard from "./HolographicCard";
+import { supabase } from "@/lib/supabase";
+
 
 interface FormData {
   fullName: string;
   email: string;
   mobile: string;
-  year: string;
   branch: string;
   prn: string;
-  os: string;
   mission: string;
 }
+
 
 const initialData: FormData = {
   fullName: "",
   email: "",
   mobile: "",
-  year: "",
   branch: "",
   prn: "",
-  os: "",
   mission: "",
 };
-
-const yearOptions = [
-  { value: "1st", label: "1st Year" },
-];
 
 const branchOptions = [
   { value: "cse", label: "Computer Science" },
   { value: "it", label: "Information Technology" },
   { value: "ece", label: "Electronics & Communication" },
   { value: "eee", label: "Electrical Engineering" },
+  { value: "mech", label: "Mechanical Engineering" },
+  { value: "civil", label: "Civil Engineering" },
+  { value: "ai_ds", label: "Robotics and Automation" },
+  { value: "aiml", label: "AI & Machine Learning" },
+  { value: "other", label: "Other" },
 ];
+
 
 const RegistrationWizard = () => {
   const [step, setStep] = useState(1);
@@ -65,14 +66,12 @@ const RegistrationWizard = () => {
       else if (!/^\d{10}$/.test(formData.mobile.replace(/\D/g, ""))) newErrors.mobile = "Invalid mobile";
     }
 
-    if (currentStep === 2) {
-      if (!formData.year) newErrors.year = "Required";
-      if (!formData.branch) newErrors.branch = "Required";
-      if (!formData.prn.trim()) newErrors.prn = "Required";
-    }
+  if (currentStep === 2) {
+  if (!formData.branch) newErrors.branch = "Required";
+  if (!formData.prn.trim()) newErrors.prn = "Required";
+}
 
     if (currentStep === 3) {
-      if (!formData.os) newErrors.os = "Required";
       if (!formData.mission.trim()) newErrors.mission = "Required";
     }
 
@@ -97,9 +96,33 @@ const RegistrationWizard = () => {
     setStep((s) => s - 1);
   };
 
-  const handleSubmit = () => {
-    setIsSubmitted(true);
-  };
+  const handleSubmit = async () => {
+  // Final step validation (optional but recommended)
+  if (!validateStep(3)) return;
+
+  const { error } = await supabase
+    .from("wlug_registrations")
+    .insert([
+  {
+    full_name: formData.fullName,
+    email: formData.email,
+    mobile: formData.mobile,
+    branch: formData.branch,
+    prn: formData.prn,
+    mission: formData.mission,
+  },
+]);
+
+  if (error) {
+    console.error("Supabase insert error:", error.message);
+    alert("Registration failed. Please try again.");
+    return;
+  }
+
+  // Success
+  setIsSubmitted(true);
+};
+
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -119,9 +142,51 @@ const RegistrationWizard = () => {
   const stepIcons = [User, User, Database, Settings, Rocket];
   const StepIcon = stepIcons[step] || User;
 
-  if (isSubmitted) {
-    return <HolographicCard name={formData.fullName} email={formData.email} />;
-  }
+if (isSubmitted) {
+  return (
+    <div className="flex justify-center">
+      <div className="relative w-[360px]">
+        {/* Soft glow */}
+        <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-xl" />
+
+        {/* Card */}
+        <div className="relative rounded-2xl border border-primary/30 
+                        bg-background/90 backdrop-blur-xl
+                        px-6 py-7 text-center shadow-lg">
+
+          {/* Icon */}
+          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center
+                          rounded-full bg-primary/10 text-primary text-xl">
+            ✅
+          </div>
+
+          {/* Title */}
+          <h2 className="text-lg font-semibold text-primary">
+            Registration Confirmed
+          </h2>
+
+          {/* Text */}
+          <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+            Thank you,{" "}
+            <span className="font-medium text-foreground">
+              {formData.fullName}
+            </span>
+            <br />
+            Your Registration has been successfully recorded.
+          </p>
+
+          {/* Divider */}
+          <div className="my-4 h-px bg-primary/20" />
+
+          {/* Footer */}
+          <p className="text-xs text-muted-foreground">
+            Stay Tuned 🚀
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
   return (
     <motion.div
@@ -224,13 +289,6 @@ const RegistrationWizard = () => {
                 </h2>
               </div>
               <CyberSelect
-                label="Year"
-                value={formData.year}
-                onChange={(v) => updateField("year", v)}
-                options={yearOptions}
-                error={errors.year}
-              />
-              <CyberSelect
                 label="Branch"
                 value={formData.branch}
                 onChange={(v) => updateField("branch", v)}
@@ -263,11 +321,6 @@ const RegistrationWizard = () => {
                   Step 3: Protocol Configuration
                 </h2>
               </div>
-              <OSSelector
-                value={formData.os}
-                onChange={(v) => updateField("os", v)}
-                error={errors.os}
-              />
               <FloatingTextarea
                 label="State your mission (Why join WLUG?)"
                 value={formData.mission}
@@ -291,7 +344,7 @@ const RegistrationWizard = () => {
             >
               <div className="mb-4">
                 <h2 className="text-sm font-semibold text-primary uppercase tracking-wider">
-                  Step 4: Review & Deploy
+                  Step 4: Review Details
                 </h2>
               </div>
               <div className="space-y-3 text-sm">
@@ -308,19 +361,15 @@ const RegistrationWizard = () => {
                   <span className="font-medium">{formData.mobile}</span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-white/10">
-                  <span className="text-muted-foreground">Year / Branch</span>
-                  <span className="font-medium">
-                    {formData.year} / {branchOptions.find((b) => b.value === formData.branch)?.label}
-                  </span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-white/10">
                   <span className="text-muted-foreground">PRN</span>
                   <span className="font-medium">{formData.prn}</span>
                 </div>
-                <div className="flex justify-between py-2 border-b border-white/10">
-                  <span className="text-muted-foreground">OS Preference</span>
-                  <span className="font-medium capitalize">{formData.os}</span>
-                </div>
+                          <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-muted-foreground">Branch</span>
+              <span className="font-medium">
+                {branchOptions.find((b) => b.value === formData.branch)?.label}
+              </span>
+            </div>
               </div>
             </motion.div>
           )}
@@ -351,7 +400,7 @@ const RegistrationWizard = () => {
           </button>
         ) : (
           <button onClick={handleSubmit} className="cyber-button-solid py-3 px-6">
-            Confirm & Deploy
+            Execute Script
           </button>
         )}
       </div>

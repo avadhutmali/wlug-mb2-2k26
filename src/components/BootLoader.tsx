@@ -73,9 +73,7 @@ const BootLoader = ({ onComplete }: BootLoaderProps) => {
         >
           {/* Terminal header */}
           <div className="flex items-center gap-2 px-4 py-2 bg-black/40 border border-white/10 border-b-0 rounded-t-lg">
-            <div className="w-3 h-3 rounded-full bg-destructive/80" />
-            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-            <div className="w-3 h-3 rounded-full bg-green-500/80" />
+
             <span className="ml-4 text-xs text-muted-foreground font-mono">
               WLUG_SYSTEM_V.2.0
             </span>

@@ -177,8 +177,8 @@ const HUDElements = ({
             <Terminal className="w-5 h-5 text-primary" />
           </div>
           <div>
-            <div className="text-sm font-display font-bold text-foreground">WLUG</div>
-            <div className="text-xs text-muted-foreground font-mono">V.2.0</div>
+            <div className="text-sm font-display font-bold text-foreground">Walchand Linux Users' Group</div>
+            <div className="text-xs text-muted-foreground font-mono">MB.2.0</div>
           </div>
         </div>
       </motion.div>
@@ -207,7 +207,6 @@ const HUDElements = ({
         <div className="flex items-center gap-3 px-4 py-2 bg-black/40 border border-white/10 rounded">
           <Users className="w-4 h-4 text-primary" />
           <span className="text-xs font-mono text-muted-foreground">
-            NETWORK: <span className="text-primary">500+ NODES</span>
           </span>
         </div>
       </motion.div>
