@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Instagram, Linkedin, Github, Twitter, Disc } from "lucide-react";
-
+import { a } from "node_modules/framer-motion/dist/types.d-CQ4vRM6h";
+import { Link } from "react-router-dom";
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
@@ -9,7 +10,7 @@ const Footer = () => {
         <footer id="contact" className="bg-[#020617] border-t border-white/10 pt-10 pb-6">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
-                    
+
                     {/* Left Column: Logo & Mission */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -17,15 +18,18 @@ const Footer = () => {
                         viewport={{ once: true }}
                         className="flex flex-col items-center text-center space-y-4"
                     >
-                        {/* Large Centered Logo */}
-                        <div className="w-28 h-28 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center p-2 shadow-lg hover:border-primary/30 transition-colors duration-300">
-                            <img 
-                                src="/wlug-logo2.png" 
-                                alt="WLUG Logo" 
-                                className="w-full h-full object-contain rounded-lg" 
-                            />
-                        </div>
+                        <a href="https://www.wcewlug.org">
+                            {/* Large Centered Logo */}
+                            <div className="w-28 h-28 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center p-2 shadow-lg hover:border-primary/30 transition-colors duration-300">
 
+                                <img
+                                    src="/wlug-logo2.png"
+                                    alt="WLUG Logo"
+                                    className="w-full h-full object-contain rounded-lg"
+                                />
+
+                            </div>
+                        </a>
                         {/* Text Below Logo */}
                         <div className="space-y-2">
                             {/* <h3 className="text-xl font-display font-bold text-white tracking-wider">WLUG ARCHITECTS</h3> */}
@@ -36,6 +40,7 @@ const Footer = () => {
                                 <p className="text-xs opacity-60">Empowering the open source future.</p>
                             </div>
                         </div>
+
                     </motion.div>
 
                     {/* Center Column: Socials */}
@@ -82,16 +87,49 @@ const Footer = () => {
                         {/* MENU SECTION - LEFT ALIGNED */}
                         <div className="space-y-3 text-center md:text-left">
                             <h4 className="text-xs font-mono text-primary/60 mb-2 tracking-wider">[ MENU ]</h4>
-                            <a href="#" className="block text-sm font-mono text-muted-foreground hover:text-primary transition-colors">Home</a>
-                            <button className="block w-full text-sm font-mono text-muted-foreground hover:text-primary transition-colors text-center md:text-left">Register</button>
-                            <a href="#" className="block text-sm font-mono text-muted-foreground hover:text-primary transition-colors">About Us</a>
+                            
+                            {/* Fixed Home Link */}
+                            <Link 
+                                to="/" 
+                                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                                className="block text-sm font-mono text-muted-foreground hover:text-primary transition-colors"
+                            >
+                                Home
+                            </Link>
+
+                            <button className="block w-full text-sm font-mono text-muted-foreground hover:text-primary transition-colors text-center md:text-left">
+                                Register
+                            </button>
+                            
+                            <a 
+                                href="https://www.wcewlug.org/" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="block text-sm font-mono text-muted-foreground hover:text-primary transition-colors"
+                            >
+                                About Us
+                            </a>
                         </div>
-                        
+
                         {/* LEGAL SECTION - LEFT ALIGNED */}
                         <div className="space-y-3 text-center md:text-left">
                             <h4 className="text-xs font-mono text-primary/60 mb-2 tracking-wider">[ LEGAL ]</h4>
-                            <a href="#" className="block text-sm font-mono text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a>
-                            <a href="#" className="block text-sm font-mono text-muted-foreground hover:text-primary transition-colors">Terms</a>
+                            <a 
+                                href="https://github.com/Walchand-Linux-Users-Group/gitbook/blob/wiki/policies/privacy-policy.md" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="block text-sm font-mono text-muted-foreground hover:text-primary transition-colors"
+                            >
+                                Privacy Policy
+                            </a>
+                            <a 
+                                href="https://github.com/Walchand-Linux-Users-Group/gitbook/blob/wiki/policies/terms-and-conditions.md" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="block text-sm font-mono text-muted-foreground hover:text-primary transition-colors"
+                            >
+                                Terms & Conditions
+                            </a>
                         </div>
                     </motion.div>
                 </div>
