@@ -212,10 +212,10 @@ const HUDElements = ({
       </motion.div>
 
       {/* Crosshair decorations */}
-      <div className="fixed top-1/2 left-8 -translate-y-1/2 text-primary/20 text-2xl font-mono z-10 hidden md:block">
+      <div className="fixed top-1/2 left-8 -translate-y-1/2 text-primary/60 text-2xl font-mono z-10 hidden md:block">
         +
       </div>
-      <div className="fixed top-1/2 right-8 -translate-y-1/2 text-primary/20 text-2xl font-mono z-10 hidden md:block">
+      <div className="fixed top-1/2 right-8 -translate-y-1/2 text-primary/60 text-2xl font-mono z-10 hidden md:block">
         +
       </div>
     </>
