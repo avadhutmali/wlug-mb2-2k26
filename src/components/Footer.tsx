@@ -90,17 +90,19 @@ const Footer = () => {
                             {/* <h4 className="text-xs font-mono text-primary/60 mb-2 tracking-wider">[ MENU ]</h4> */}
 
                             {/* Fixed Home Link */}
-                            <Link
-                                to="/"
-                                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                                className="block text-sm font-mono text-muted-foreground hover:text-primary transition-colors"
+                            <a
+                                href="#home"
+                                className="block text-sm font-mono text-muted-foreground hover:text-primary transition-colors hover:translate-x-1 duration-200"
                             >
-                                Home
-                            </Link>
+                                HOME
+                            </a>
 
-                            <button className="block w-full text-sm font-mono text-muted-foreground hover:text-primary transition-colors text-center md:text-left">
-                                Register
-                            </button>
+                            <a
+                                href="#register"
+                                className="block text-sm font-mono text-muted-foreground hover:text-primary transition-colors hover:translate-x-1 duration-200"
+                            >
+                                REGISTER
+                            </a>
 
                             <a
                                 href="https://www.wcewlug.org/"

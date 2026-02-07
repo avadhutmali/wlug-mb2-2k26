@@ -187,7 +187,7 @@ const LandingPage = ({ onScrollToRecruitment, isBlurred }: LandingPageProps) => 
           transition={{ delay: 1, duration: 0.5 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}
-          onClick={onScrollToRecruitment}
+          onClick={() => document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' })}
           className="group relative px-10 py-5 bg-primary/10 border-2 border-primary text-primary font-bold uppercase tracking-[0.2em] font-mono pulse-button transition-all duration-300 hover:bg-primary hover:text-primary-foreground mb-20 md:mb-0"
         >
           <span className="relative z-10 flex items-center gap-3">
@@ -198,7 +198,7 @@ const LandingPage = ({ onScrollToRecruitment, isBlurred }: LandingPageProps) => 
         </motion.button>
 
         {/* Decorative brackets around CTA */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
@@ -209,7 +209,7 @@ const LandingPage = ({ onScrollToRecruitment, isBlurred }: LandingPageProps) => 
           <span>{'//'}</span>
           <span>AUTHENTICATED</span>
           <span>{'>'}</span>
-        </motion.div>
+        </motion.div> */}
       </div>
     </motion.div>
   );
