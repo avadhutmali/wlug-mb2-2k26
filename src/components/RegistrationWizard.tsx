@@ -182,7 +182,8 @@ const RegistrationWizard = () => {
   if (isSubmitted) {
     return (
       <div className="flex justify-center items-center min-h-[400px]">
-        <HolographicCard name={formData.fullName} email={formData.email} />
+        {/* <HolographicCard name={formData.fullName} email={formData.email} /> */}
+        <HolographicCard/>
       </div>
     );
   }
