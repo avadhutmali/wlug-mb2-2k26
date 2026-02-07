@@ -26,7 +26,7 @@ const RecruitmentSection = ({ onOpenRegistration }: RecruitmentSectionProps) => 
                     {/* Glowing border effect */}
                     <div className="absolute -inset-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
 
-                    <div className="bg-black/80 rounded-[22px] border border-white/5 p-6 md:p-16 relative overflow-hidden">
+                    <div className="bg-black/80 rounded-[22px] border border-white/5 p-6 md:p-16 relative overflow-hidden h-auto">
                         {/* Corner decorations */}
                         <div className="absolute top-4 left-4 text-primary/40"><Crosshair className="w-6 h-6" /></div>
                         <div className="absolute top-4 right-4 text-primary/40"><Crosshair className="w-6 h-6" /></div>
@@ -44,8 +44,8 @@ const RecruitmentSection = ({ onOpenRegistration }: RecruitmentSectionProps) => 
                         </div>
 
                         {/* Content */}
-                        <div className="text-center space-y-6 max-w-3xl mx-auto">
-                            <h2 className="text-3xl md:text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-primary bg-[length:200%_auto] animate-text-shimmer leading-tight pb-2">
+                        <div className="flex flex-col gap-8 items-center max-w-3xl mx-auto">
+                            <h2 className="text-3xl md:text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-primary bg-[length:200%_auto] animate-text-shimmer leading-tight text-center">
                                 MEMBER BOARD 2
                             </h2>
 
@@ -53,10 +53,10 @@ const RecruitmentSection = ({ onOpenRegistration }: RecruitmentSectionProps) => 
                                 AUTHENTICATE YOUR SKILLS.
                             </p> */}
 
-                            <div className="pt-8">
+                            <div className="w-full flex justify-center">
                                 <button
                                     onClick={onOpenRegistration}
-                                    className="cyber-button-solid text-lg md:text-xl px-10 py-5 group relative overflow-hidden"
+                                    className="cyber-button-solid text-lg md:text-xl px-6 py-4 md:px-10 md:py-5 group relative overflow-hidden w-full md:w-auto flex justify-center items-center"
                                 >
                                     <span className="relative z-10 flex items-center gap-3">
                                         <Users className="w-5 h-5" />
