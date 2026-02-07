@@ -49,16 +49,92 @@ const LandingPage = ({ onScrollToRecruitment, isBlurred }: LandingPageProps) => 
           transition={{ delay: 0.2, duration: 0.5 }}
           className="mb-8 md:mb-8"
         >
-          <div className="relative">
-            <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full" />
-            <div className="relative p-4 border border-primary/30 rounded-full flex items-center justify-center bg-black/20 backdrop-blur-sm">
+          <motion.div
+            className="relative cursor-pointer mb-10"
+            whileHover="hover"
+            initial="initial"
+          >
+            {/* Layer 2: The Bloom (Outer Glow - Toned Down) */}
+            <motion.div
+              variants={{
+                initial: { opacity: 0.3, scale: 1 },
+                hover: { opacity: 0.6, scale: 1.05 }
+              }}
+              animate={{
+                opacity: [0.3, 0.5, 0.3],
+                scale: [1, 1.05, 1]
+              }}
+              transition={{
+                opacity: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+                scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                default: { duration: 0.3 }
+              }}
+              className="absolute inset-[-50%] rounded-full blur-3xl z-0"
+              style={{
+                background: "radial-gradient(circle, rgba(0, 240, 255, 0.4) 0%, rgba(0, 240, 255, 0) 70%)"
+              }}
+            />
+
+            {/* Layer 1: The Core (Solid Neon - Toned Down) */}
+            <motion.div
+              variants={{
+                initial: { opacity: 0.4, scale: 1 },
+                hover: { opacity: 0.8, scale: 1.1 }
+              }}
+              animate={{
+                opacity: [0.4, 0.6, 0.4]
+              }}
+              whileHover={{
+                opacity: [0.8, 0.6, 0.8, 0.7, 0.8], // Flicker effect
+                transition: {
+                  opacity: { duration: 0.2, repeat: Infinity, repeatType: "reverse" }
+                }
+              }}
+              transition={{
+                opacity: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+                default: { duration: 0.2 }
+              }}
+              className="absolute inset-0 rounded-full blur-md z-0"
+              style={{ background: "rgba(0, 240, 255, 0.6)" }}
+            />
+
+            {/* Orbital Ring 1 (Inner) */}
+            <motion.div
+              variants={{
+                initial: { scale: 1, rotate: 0 },
+                hover: { scale: 1.1, rotate: 0 }
+              }}
+              animate={{ rotate: 360 }}
+              transition={{
+                rotate: { duration: 10, repeat: Infinity, ease: "linear" },
+                scale: { duration: 0.3 }
+              }}
+              className="absolute inset-[-10%] border border-cyan-500/40 rounded-full z-0"
+            />
+
+            {/* Orbital Ring 2 (Outer - New Third Ring) */}
+            <motion.div
+              variants={{
+                initial: { scale: 1, rotate: 0 },
+                hover: { scale: 1.05, rotate: 0 }
+              }}
+              animate={{ rotate: -360 }}
+              transition={{
+                rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+                scale: { duration: 0.3 }
+              }}
+              className="absolute inset-[-25%] border border-cyan-500/20 rounded-full z-0"
+            />
+
+            {/* Logo Container with Layer 3 (Aura - Toned Down) */}
+            <div className="relative z-10 p-4 border border-cyan-500/30 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-sm shadow-[0_0_20px_rgba(0,240,255,0.1)]">
               <img
                 src="/wlug-logo.jpeg"
                 alt="WLUG Logo"
-                className="w-24 h-24 md:w-32 md:h-32 object-contain rounded-full"
+                className="w-24 h-24 md:w-32 md:h-32 object-contain rounded-full relative z-20 drop-shadow-[0_0_15px_rgba(0,240,255,0.5)]"
               />
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Main Headline */}
@@ -116,7 +192,7 @@ const LandingPage = ({ onScrollToRecruitment, isBlurred }: LandingPageProps) => 
         >
           <span className="relative z-10 flex items-center gap-3">
             <span className="text-primary/60 group-hover:text-primary-foreground/60">[</span>
-            INITIALIZE REGISTRATION
+            INITIALIZE APPLICATION
             <span className="text-primary/60 group-hover:text-primary-foreground/60">]</span>
           </span>
         </motion.button>
@@ -129,9 +205,9 @@ const LandingPage = ({ onScrollToRecruitment, isBlurred }: LandingPageProps) => 
           className="mt-8 flex items-center gap-4 text-muted-foreground/50 font-mono text-xs"
         >
           <span>{'<'}</span>
-          <span>MB_2_RECRUITMENT</span>
-          <span>{'/'}</span>
-          <span>ACTIVE</span>
+          <span>SHELL_SESSION</span>
+          <span>{'//'}</span>
+          <span>AUTHENTICATED</span>
           <span>{'>'}</span>
         </motion.div>
       </div>

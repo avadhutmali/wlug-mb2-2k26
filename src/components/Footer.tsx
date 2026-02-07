@@ -87,7 +87,7 @@ const Footer = () => {
                     >
                         {/* MENU SECTION - LEFT ALIGNED */}
                         <div className="space-y-3 text-center md:text-left">
-                            <h4 className="text-xs font-mono text-primary/60 mb-2 tracking-wider">[ MENU ]</h4>
+                            {/* <h4 className="text-xs font-mono text-primary/60 mb-2 tracking-wider">[ MENU ]</h4> */}
 
                             {/* Fixed Home Link */}
                             <Link
@@ -114,7 +114,7 @@ const Footer = () => {
 
                         {/* LEGAL SECTION - LEFT ALIGNED */}
                         <div className="space-y-3 text-center md:text-left">
-                            <h4 className="text-xs font-mono text-primary/60 mb-2 tracking-wider">[ LEGAL ]</h4>
+                            {/* <h4 className="text-xs font-mono text-primary/60 mb-2 tracking-wider">[ LEGAL ]</h4> */}
                             <a
                                 href="https://github.com/Walchand-Linux-Users-Group/gitbook/blob/wiki/policies/privacy-policy.md"
                                 target="_blank"

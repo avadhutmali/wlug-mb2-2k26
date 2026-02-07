@@ -33,7 +33,7 @@ const branchOptions = [
   { value: "ece", label: "Electronics" },
   { value: "eee", label: "Electrical" },
   { value: "robotics", label: "Robotics and Automation" },
-  { value: "aiml", label: "AI & Machine Learning" },
+  { value: "aiml", label: "AIML" },
 ];
 
 const RegistrationWizard = () => {

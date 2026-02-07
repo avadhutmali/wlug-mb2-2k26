@@ -157,6 +157,33 @@
     }
   }
 
+  /* WLUG Logo Animation
+  @keyframes pulse-glow-blue {
+
+    0%,
+    100% {
+      box-shadow: 0 0 15px hsl(187 94% 43% / 0.2), inset 0 0 10px hsl(187 94% 43% / 0.1);
+      border-color: hsl(187 94% 43% / 0.3);
+    }
+
+    50% {
+      box-shadow: 0 0 25px hsl(187 94% 43% / 0.5), inset 0 0 20px hsl(187 94% 43% / 0.2);
+      border-color: hsl(187 94% 43% / 0.6);
+    }
+  }
+
+  .logo-glow {
+    @apply transition-all duration-500 ease-out;
+    animation: pulse-glow-blue 3s ease-in-out infinite;
+  }
+
+  .logo-glow:hover {
+    @apply scale-110;
+    animation: none;
+    box-shadow: 0 0 50px hsl(187 94% 43% / 0.8), 0 0 100px hsl(187 94% 43% / 0.4), inset 0 0 30px hsl(187 94% 43% / 0.4);
+    border-color: hsl(187 94% 43% / 1);
+  } */
+
   /* Floating labels */
   .floating-label-group {
     @apply relative;
