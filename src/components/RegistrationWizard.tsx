@@ -230,7 +230,7 @@ const RegistrationWizard = () => {
           </div>
           <div>
             <h1 className="text-base font-bold tracking-wider uppercase font-display">
-              WLUG MEMBER BOARD <span className="text-[1.2rem] md:text-1xl leading-none">2</span> REGISTRATION
+              WLUG MEMBER BOARD <span className="text-[1.3rem] md:text-1xl leading-none">2</span> REGISTRATION
             </h1>
             <p className="text-xs text-muted-foreground font-mono">
               STEP_{step}_OF_4
