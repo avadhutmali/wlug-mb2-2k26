@@ -34,23 +34,22 @@ const RegistrationEnd = () => {
                             <Crosshair className="w-4 h-4 md:w-6 md:h-6" />
                         </div>
 
-                        {/* System Status: Offline (Red) */}
-                        {/* <div className="flex justify-center mb-8 mt-10 md:mt-0">
+                        <div className="flex justify-center mb-8 mt-10 md:mt-0">
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20">
                                 <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                                 <span className="text-[10px] md:text-xs font-mono font-bold text-red-500 tracking-widest">
-                                    SYSTEM STATUS: OFFLINE
+                                    SYSTEM STATUS: CLOSED
                                 </span>
                             </div>
-                        </div> */}
+                        </div>
 
                         {/* Content */}
-                        <div className="flex flex-col gap-6 items-center max-w-3xl mx-auto text-center">
+                        <div className="flex flex-col gap-8 items-center max-w-3xl mx-auto text-center">
                             <h2 className="text-3xl md:text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-primary bg-[length:200%_auto] animate-text-shimmer">
-                                MEMBER BOARD <span className="text-[2.4rem] md:text-[4.88rem] leading-none">2</span>
+                                MEMBER BOARD <span className="text-[2.3rem] md:text-[4.88rem] leading-none">2</span>
                             </h2>
 
-                            <h1 className="text-3xl md:text-5xl font-bold text-white tracking-wide">
+                            <h1 className="text-4xl md:text-7xl font-bold font-display text-transparent bg-clip-text bg-gradient-to-b from-red-500 to-red-700 drop-shadow-[0_0_25px_rgba(239,68,68,0.4)]">
                                 REGISTRATIONS CLOSED
                             </h1>
 

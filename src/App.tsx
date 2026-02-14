@@ -72,7 +72,7 @@ const App = () => {
               </section>
               <section id="register">
                 <RecruitmentSection onOpenRegistration={handleOpenRegistration} />
-                {/* <RegistrationEnd /> */}
+                {/* <RegistrationEnd /> to be done after reg closes */}
               </section>
               <section id="footer">
                 <Footer />
