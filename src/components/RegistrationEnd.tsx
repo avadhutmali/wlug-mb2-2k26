@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Crosshair } from "lucide-react";
+import { Crosshair, Heading3Icon } from "lucide-react";
 
 const RegistrationEnd = () => {
     return (
@@ -49,7 +49,7 @@ const RegistrationEnd = () => {
                                 MEMBER BOARD <span className="text-[2.3rem] md:text-[4.88rem] leading-none">2</span>
                             </h2>
 
-                            <h1 className="text-4xl md:text-7xl font-bold font-display text-transparent bg-clip-text bg-gradient-to-b from-red-500 to-red-700 drop-shadow-[0_0_25px_rgba(239,68,68,0.4)]">
+                            <h1 className="text-3xl md:text-5xl font-bold font-display text-transparent bg-clip-text bg-gradient-to-b from-red-500 to-red-700 drop-shadow-[0_0_25px_rgba(239,68,68,0.6)]">
                                 REGISTRATIONS CLOSED
                             </h1>
 

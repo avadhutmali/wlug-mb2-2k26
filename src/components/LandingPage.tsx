@@ -242,7 +242,7 @@ const HUDElements = ({
             SYSTEM_TIME
           </div>
           <div className="text-2xl font-mono text-primary text-glow">
-            {formatTime(currentTime)}
+            {/* {formatTime(currentTime)} */}23:59:59
           </div>
         </div>
       </motion.div>
@@ -272,9 +272,9 @@ const HUDElements = ({
         className="fixed bottom-6 left-6 z-20 hidden md:block"
       >
         <div className="flex items-center gap-3 px-4 py-2 bg-black/40 border border-white/10 rounded">
-          <div className="status-dot" />
+          <div className="w-2 h-2 rounded-full bg-red-500 animate-[pulse_2s_ease-in-out_infinite] shadow-[0_0_8px_rgba(239,68,68,0.8)]" />
           <span className="text-xs font-mono text-muted-foreground">
-            STATUS: <span className="text-green-400">ONLINE</span>
+            STATUS: <span className="text-red-500 font-bold">OFFLINE</span>
           </span>
         </div>
       </motion.div>
@@ -288,7 +288,7 @@ const HUDElements = ({
       >
         <div className="flex items-center gap-3 px-4 py-2 bg-black/40 border border-white/10 rounded">
           <span className="text-xs font-mono text-muted-foreground">
-            {">_"} <span className="text-cyan-400">ACCESS</span>
+            {">_"} <span className="text-red-500">ACCESS DENIED</span>
           </span>
         </div>
       </motion.div>

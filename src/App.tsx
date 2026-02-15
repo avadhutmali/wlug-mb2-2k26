@@ -71,8 +71,8 @@ const App = () => {
                 />
               </section>
               <section id="register">
-                <RecruitmentSection onOpenRegistration={handleOpenRegistration} />
-                {/* <RegistrationEnd /> to be done after reg closes */}
+                {/* <RecruitmentSection onOpenRegistration={handleOpenRegistration} /> */}
+                <RegistrationEnd />
               </section>
               <section id="footer">
                 <Footer />

@@ -8,10 +8,9 @@ interface BootLoaderProps {
 const bootMessages = [
   { text: "> INITIALIZING KERNEL...", delay: 0 },
   { text: "> LOADING MODULES... [OK]", delay: 800 },
-  { text: "> MOUNTING FILESYSTEMS... [OK]", delay: 1400 },
-  { text: "> ESTABLISHING SECURE CONNECTION...", delay: 2000 },
-  { text: "> AUTHENTICATING NETWORK NODES...", delay: 2600 },
-  { text: "> SYSTEM READY", delay: 3200 },
+  { text: "> VERIFYING ENCRYPTION KEYS...", delay: 1600 },
+  { text: "> ERROR: SECURITY TOKEN INVALID", delay: 2100 },
+  // { text: "> ERROR: SYSTEM OVERRIDE INITIATED...", delay: 2900 },
 ];
 
 const BootLoader = ({ onComplete }: BootLoaderProps) => {
@@ -23,13 +22,17 @@ const BootLoader = ({ onComplete }: BootLoaderProps) => {
     // Progress bar animation
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) {
+        if (prev >= 59) {
           clearInterval(progressInterval);
-          return 100;
+          setIsGlitching(true);
+          setTimeout(() => {
+            onComplete();
+          }, 500);
+          return 80;
         }
         return prev + 2;
       });
-    }, 60);
+    }, 90);
 
     // Message typing animation
     bootMessages.forEach(({ text, delay }) => {
@@ -38,17 +41,8 @@ const BootLoader = ({ onComplete }: BootLoaderProps) => {
       }, delay);
     });
 
-    // Trigger glitch and complete
-    const completeTimer = setTimeout(() => {
-      setIsGlitching(true);
-      setTimeout(() => {
-        onComplete();
-      }, 500);
-    }, 3500);
-
     return () => {
       clearInterval(progressInterval);
-      clearTimeout(completeTimer);
     };
   }, [onComplete]);
 
@@ -83,19 +77,28 @@ const BootLoader = ({ onComplete }: BootLoaderProps) => {
           <div className="bg-black/60 border border-white/10 border-t-0 rounded-b-lg p-6 min-h-[300px]">
             {/* Boot messages */}
             <div className="space-y-2 mb-8">
-              {currentMessages.map((message, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.1 }}
-                  className="font-mono text-sm"
-                >
-                  <span className={message.includes("[OK]") || message.includes("READY") ? "text-green-400" : "text-primary"}>
-                    {message}
-                  </span>
-                </motion.div>
-              ))}
+              {currentMessages.map((message, index) => {
+                const isError = message.includes("ERROR") || message.includes("FAILURE") || message.includes("OVERRIDE");
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.1 }}
+                    className="font-mono text-sm"
+                  >
+                    <span className={
+                      isError
+                        ? "text-red-500 font-bold"
+                        : message.includes("[OK]") || message.includes("READY")
+                          ? "text-green-400"
+                          : "text-primary"
+                    }>
+                      {message}
+                    </span>
+                  </motion.div>
+                );
+              })}
 
               {/* Blinking cursor */}
               {currentMessages.length < bootMessages.length && (
@@ -111,7 +114,7 @@ const BootLoader = ({ onComplete }: BootLoaderProps) => {
               </div>
               <div className="h-2 bg-black/40 border border-white/10 rounded overflow-hidden">
                 <motion.div
-                  className="h-full bg-gradient-to-r from-primary to-secondary"
+                  className={`h-full ${currentMessages.some(m => m.includes("ERROR")) ? "bg-red-500" : "bg-gradient-to-r from-primary to-secondary"}`}
                   style={{ width: `${progress}%` }}
                   initial={{ width: 0 }}
                   animate={{ width: `${progress}%` }}
